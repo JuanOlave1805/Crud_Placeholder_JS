@@ -1,0 +1,49 @@
+{
+  "documento": [
+    {
+      "id": "1",
+      "name": "T.I"
+    },
+    {
+      "id": "2",
+      "name": "C.C"
+    }
+  ],
+  "usuario": [
+    {
+      "id": "1",
+      "nombre": "Juan",
+      "apellido": "Olave",
+      "documento": "1234567890",
+      "tipo_documento": 2,
+      "correo": "olavejuan1805@gmail.com",
+      "direccion": "cerca"
+    },
+    {
+      "id": "1",
+      "nombre": "Juan",
+      "apellido": "Olave",
+      "documento": "1234567890",
+      "tipo_documento": 1,
+      "correo": "olavejuan1805@gmail.com",
+      "direccion": "lejos"
+    },
+    {
+      "id": "1",
+      "nombre": "Juan",
+      "apellido": "Olave",
+      "documento": "12345",
+      "correo": "lol@gmail.com",
+      "direccion": "cerca"
+    },
+    {
+      "id": "1",
+      "nombre": "Juan",
+      "apellido": "Olave",
+      "documento": "12345",
+      "tipo_documento": "2",
+      "correo": "lol@gmail.com",
+      "direccion": "cerca"
+    }
+  ]
+}
