@@ -79,20 +79,23 @@ form > button:hover{
 }
 
 table{
-    width: 600px;
+    width: auto;
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    flex-direction: column;
+    
 }
 .casilla{
-    justify-content: space-around;
+    justify-content: center;
     background-color: aliceblue;
     border-bottom:1px solid black ;
-    width: 100%;
+    width: 50vw;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
 }
 .table{
-    width: 800px;
+    width: 1200px;
     margin-left: 10px;
     display: flex;
     flex-direction: column;

@@ -1,5 +1,5 @@
-import { llamar, send } from './modulo.js';
-llamar();
+import { opcionesSelect, send, mostrar } from './modulo.js';
+opcionesSelect();
 
 const $form = document.querySelector("#formulario");
 
@@ -49,7 +49,49 @@ $form.addEventListener("submit", validacion);
 
 
 
-
-const tabla = {
+const listar = async () => {
+    const $framento = document.createDocumentFragment();
+    const $tabla = document.getElementById('tabla'); // Asegúrate de que este sea el ID correcto de la tabla en tu HTML
     
+    // Obtenemos los datos
+    const datos = await mostrar();
+
+    datos.forEach(element => {
+        const $tr = document.createElement('tr');
+        const $td1 = document.createElement('td');
+        const $td2 = document.createElement('td');
+        const $td3 = document.createElement('td');
+        const $td4 = document.createElement('td');
+        const $td5 = document.createElement('td');
+        const $td6 = document.createElement('td');
+        const $td7 = document.createElement('td');
+        const $td8 = document.createElement('td');
+
+
+        $td1.textContent = element.id;
+        $td2.textContent = element.nombre; 
+        $td3.textContent = element.apellido;
+        $td4.textContent = element.documento;
+        $td5.textContent = element.tipo_documento; 
+        $td6.textContent = element.correo;   
+        $td7.textContent = element.direccion;   
+
+
+        $tr.classList.add("casilla");
+        $tr.appendChild($td1);
+        $tr.appendChild($td2);
+        $tr.appendChild($td3);
+        $tr.appendChild($td4);
+        $tr.appendChild($td5);
+        $tr.appendChild($td6);
+        $tr.appendChild($td7);
+
+
+        $framento.appendChild($tr);    
+    });
+
+    $tabla.appendChild($framento);
 }
+
+// Llamamos a la función lista para ejecutar el código
+listar();
