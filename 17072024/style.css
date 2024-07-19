@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    font-family: "Roboto Condensed", sans-serif;
+    font-style: normal;
+    font-size: 14px
+}
+main{
+    background-color: rgb(216, 216, 231);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 20px 0;
+    width: 400px;    
+    background-color: rgb(131, 153, 173);
+    border-radius: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: white;
+}
+
+main > div > form{
+    width: 300px;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+}
+
+form > label {
+    height: 30px;
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+}
+
+form > input{
+    height: 40px;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+}
+form > select{
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+}
+
+select > option {
+    font-size: 1rem;
+}
+
+form > button {
+    border-radius: 10px;
+    border: none;
+    height: 40px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+form > button:hover{
+    background-color: aliceblue;
+    color: rgb(45, 45, 145);
+    cursor: pointer;
+}
+
+.inputGreend{
+    border: solid green 2px;
+}
+.inputRed{
+    border: solid red 2px;
+}
