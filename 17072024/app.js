@@ -1,5 +1,7 @@
-import {default as letras} from "/modulo.js";
-import {default as numeros} from "/validacionNumeros.js";
+import {default as inputValidos} from "./inputValidos.js";
+import {default as letras} from "./modulo.js";
+import {default as numeros} from "./validacionNumeros.js";
+
 const $inputId = document.querySelector("#inputId");
 const $inputNombre = document.querySelector("#inputNombre");
 const $inputApellido = document.querySelector("#inputApellido");
@@ -7,7 +9,10 @@ const $inputTelefono = document.querySelector("#inputTelefono");
 const $inputDireccion = document.querySelector("#inputDireccion");
 const $inputDocumento = document.querySelector("#inputDocumento");
 const $inputEmail = document.querySelector("#inputEmail");
-const $btnEnviar = document.querySelector("#btnEnviar")
+const $btnEnviar = document.querySelector("#btnEnviar");
+const $form = document.querySelector('form');
+const $tipoDoc = document.querySelector('#tipoDocumento');
+ 
 
 // const letras = (event, elemento) => {
 //     console.log(event)
@@ -75,12 +80,12 @@ function validarCampoLetras(event, elemento) {
 }
 
 
-$inputId.addEventListener("keypress", (event) =>{
-    numeros(event, $inputId);
-});
-$inputId.addEventListener("blur", (event) =>{
-    validarCampo(event, $inputId)
-});
+// $inputId.addEventListener("keypress", (event) =>{
+//     numeros(event, $inputId);
+// });
+// $inputId.addEventListener("blur", (event) =>{
+//     validarCampo(event, $inputId)
+// });
 
 
 $inputNombre.addEventListener("keypress", (event) =>{
@@ -131,6 +136,19 @@ $inputEmail.addEventListener("blur", (event) =>{
 $btnEnviar.addEventListener("submit", (event) =>{
     revisar(event);
 })
+$form.addEventListener("submit", (event) =>{
+    let reponse = inputValidos(event, "form [required]")
+    alert(reponse);
+    let objeto = new {
+        nombre: $inputNombre.value,
+        apellido: $inputApellido.value,
+        telefono: $inputTelefono.value,
+        direccion: $inputDireccion.value,
+        tipo: $tipoDoc.value,
+        documento: $inputDocumento.value,
+        email: $inputEmail.value
+    }
+})
 function revisar(event){
     let input1 = $inputId.value;
     let input2 = $inputNombre.value;
@@ -142,7 +160,7 @@ function revisar(event){
     console.log(input1, input2, input3, input4, input5, input6, input7)
 
 
-    if(input1=="" || input2 =="" || input3 =="" || input4 =="" || input5 || input6 =="" || input7 ==""){
+    if(input1 =="" || input2 =="" || input3 =="" || input4 =="" || input5 || input6 =="" || input7 ==""){
         alert("Rellena todos los campos")
     }
     else{

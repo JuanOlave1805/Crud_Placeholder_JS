@@ -1,4 +1,4 @@
-export default (numeros);
+export default numeros;
 function numeros(event, elemento){
     // console.log(elemento)
     let numero = event.target.value.length;
