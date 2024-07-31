@@ -21,19 +21,37 @@
              <input class="" type="text" placeholder="Ingrese su direccíon"id="inputDireccion" required>
              <label class="" for="Tipo-doc">Tipo-doc</label>
              <select class="" name="tipo_documento" id="tipoDocumento">
-                <option value="">Cedula de ciudadania</option>
-                <option value="">Tarjeta de identidad</option>
              </select>
              <label class="" for="correo">Documento</label>
              <input class="" type="text" placeholder="Ingrese su numero de documento"id="inputDocumento" required>
              <label class="" for="direccion">Email</label>
              <input class="" type="" placeholder="Ingrese su direccion de email"id="inputEmail">
              <div>
-                <input type="checkbox">
+                <input type="checkbox" id="checkbox">
                 <a>Aceptas terminos y condiciones</a>
              </div>
              <button class="" type="submit" id="btnEnviar">Enviar</button>
             </form>
+        </div>
+        <div class="table">
+            <h1>Tabla mostrar datos</h1>
+            <table>
+                <thead>
+                    <tr class="casilla">
+                        <td>Documento</td>
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                        <td>Telefono</td>
+                        <td>Direccion</td>
+                        <td>Tipo Doc</td>
+                        <td>Email</td>
+                    </tr>
+                </thead>
+                <tbody id="tabla">
+                    
+                </tbody>
+                
+            </table>
         </div>
     </main>
     <script src="app.js" type="module"></script>

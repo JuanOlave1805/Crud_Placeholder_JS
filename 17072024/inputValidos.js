@@ -1,12 +1,13 @@
 const dom = document;
 const inputValidos = (event, form) => {
-    let elementos = dom.querySelectorAll(form);
-    console.log(elementos);
+    
     event.preventDefault();
+    const elemento = dom.querySelectorAll(form);
+    
     let bandera = true;
-    elementos.forEach(elementos => {
-        if (elementos.value === "") {
-            elementos.classList.add("inputRed");
+    elemento.forEach(elemento => {
+        if (elemento.value === "") {
+            elemento.classList.add("inputRed");
             bandera = false;
         }
     });

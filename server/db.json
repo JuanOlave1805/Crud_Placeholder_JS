@@ -11,39 +11,31 @@
   ],
   "usuario": [
     {
-      "id": "1",
-      "nombre": "Juan",
-      "apellido": "Olave",
-      "documento": "1234567890",
-      "tipo_documento": 2,
-      "correo": "olavejuan1805@gmail.com",
-      "direccion": "cerca"
+      "id": "1213549865",
+      "nombre": "João",
+      "apellido": "Souza Silva",
+      "telefono": "3121286800",
+      "direccion": "Av. dos Andradas, 3000",
+      "tipo": "1",
+      "email": "teste@exemplo.us"
     },
     {
-      "id": "1",
-      "nombre": "Juan",
-      "apellido": "Olave",
-      "documento": "1234567890",
-      "tipo_documento": 1,
-      "correo": "olavejuan1805@gmail.com",
-      "direccion": "lejos"
+      "id": "5151221333",
+      "nombre": "Jon",
+      "apellido": "Doe",
+      "telefono": "6019521325",
+      "direccion": "1600 Amphitheatre Parkway",
+      "tipo": "2",
+      "email": "test@example.us"
     },
     {
-      "id": "1",
-      "nombre": "Juan",
-      "apellido": "Olave",
-      "documento": "12345",
-      "correo": "lol@gmail.com",
-      "direccion": "cerca"
-    },
-    {
-      "id": "1",
-      "nombre": "Juan",
-      "apellido": "Olave",
-      "documento": "12345",
-      "tipo_documento": "2",
-      "correo": "lol@gmail.com",
-      "direccion": "cerca"
+      "id": "2113213132",
+      "nombre": "Jon",
+      "apellido": "Doe",
+      "telefono": "6019521325",
+      "direccion": "1600 Amphitheatre Parkway",
+      "tipo": "2",
+      "email": "test@example.us"
     }
   ]
 }

@@ -1,16 +1,18 @@
 import {default as inputValidos} from "./inputValidos.js";
 import {default as letras} from "./modulo.js";
 import {default as numeros} from "./validacionNumeros.js";
+import {check, send, opcionesSelect, mostrar} from "./modulo.js";
+opcionesSelect();
 
-const $inputId = document.querySelector("#inputId");
 const $inputNombre = document.querySelector("#inputNombre");
 const $inputApellido = document.querySelector("#inputApellido");
 const $inputTelefono = document.querySelector("#inputTelefono");
 const $inputDireccion = document.querySelector("#inputDireccion");
 const $inputDocumento = document.querySelector("#inputDocumento");
+const $checkbox = document.querySelector("#checkbox");
 const $inputEmail = document.querySelector("#inputEmail");
 const $btnEnviar = document.querySelector("#btnEnviar");
-const $form = document.querySelector('form');
+const $form = document.querySelector('#formulario');
 const $tipoDoc = document.querySelector('#tipoDocumento');
  
 
@@ -80,12 +82,6 @@ function validarCampoLetras(event, elemento) {
 }
 
 
-// $inputId.addEventListener("keypress", (event) =>{
-//     numeros(event, $inputId);
-// });
-// $inputId.addEventListener("blur", (event) =>{
-//     validarCampo(event, $inputId)
-// });
 
 
 $inputNombre.addEventListener("keypress", (event) =>{
@@ -133,37 +129,78 @@ $inputEmail.addEventListener("blur", (event) =>{
 })
 
 
-$btnEnviar.addEventListener("submit", (event) =>{
-    revisar(event);
-})
 $form.addEventListener("submit", (event) =>{
+
     let reponse = inputValidos(event, "form [required]")
-    alert(reponse);
-    let objeto = new {
+
+    const objeto = {
         nombre: $inputNombre.value,
         apellido: $inputApellido.value,
         telefono: $inputTelefono.value,
         direccion: $inputDireccion.value,
         tipo: $tipoDoc.value,
-        documento: $inputDocumento.value,
+        id: $inputDocumento.value,
         email: $inputEmail.value
     }
+    console.log(objeto)
+    
+    if(reponse){
+        send(event,objeto)
+    }
 })
-function revisar(event){
-    let input1 = $inputId.value;
-    let input2 = $inputNombre.value;
-    let input3 = $inputApellido.value;
-    let input4 = $inputTelefono.value;
-    let input5 = $inputDireccion.value;
-    let input6 = $inputDocumento.value;
-    let input7 = $inputEmail.value;
-    console.log(input1, input2, input3, input4, input5, input6, input7)
+
+const listar = async () => {
+    const $framento = document.createDocumentFragment();
+    const $tabla = document.getElementById('tabla'); // Asegúrate de que este sea el ID correcto de la tabla en tu HTML
+    
+    // Obtenemos los datos
+    const datos = await mostrar();
+
+    datos.forEach(element => {
+        const $tr = document.createElement('tr');
+        const $td1 = document.createElement('td');
+        const $td2 = document.createElement('td');
+        const $td3 = document.createElement('td');
+        const $td4 = document.createElement('td');
+        const $td5 = document.createElement('td');
+        const $td6 = document.createElement('td');
+        const $td7 = document.createElement('td');
 
 
-    if(input1 =="" || input2 =="" || input3 =="" || input4 =="" || input5 || input6 =="" || input7 ==""){
-        alert("Rellena todos los campos")
-    }
-    else{
-        alert("Good")
-    }
+        $td1.textContent = element.id;
+        $td2.textContent = element.nombre; 
+        $td3.textContent = element.apellido;
+        $td4.textContent = element.telefono;
+        $td5.textContent = element.direccion; 
+        $td6.textContent = element.tipo;   
+        $td7.textContent = element.email;   
+
+
+        $tr.classList.add("casilla");
+        $tr.appendChild($td1);
+        $tr.appendChild($td2);
+        $tr.appendChild($td3);
+        $tr.appendChild($td4);
+        $tr.appendChild($td5);
+        $tr.appendChild($td6);
+        $tr.appendChild($td7);
+
+
+        $framento.appendChild($tr);    
+    });
+
+    $tabla.appendChild($framento);
 }
+listar();
+
+
+addEventListener("DOMContentLoaded", (event) => {
+    if(!$checkbox.checked){
+        $btnEnviar.setAttribute("disabled", "");
+    }
+})
+$checkbox.addEventListener("change", function (e) {
+    if(e.target.checked){
+        $btnEnviar.removeAttribute("disabled")
+    }
+})
