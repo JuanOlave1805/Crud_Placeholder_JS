@@ -64,6 +64,7 @@ export async function opcionesSelect() {
     }
 }
 
+
 function letras (event, elemento) {
     let expresion = /^[a-zA-ZAà-ÿ]+$/;
     if (!expresion.test(event.key)){
@@ -83,4 +84,19 @@ function letras (event, elemento) {
         elemento.classList.remove("inputRed");
         elemento.classList.add("inputGreend");
     }
+}
+
+
+export const opcionesSelector = async (url) => {
+    let respuesta1 = await fetch(`http://localhost:3000/${url}`);
+    let respuesta2 = await respuesta1.json();
+    return respuesta2;
+} 
+
+const URL = "http://localhost:3000/";
+export async function filtrar(url) {
+    let respuesta1 = await fetch(`${URL}${url}`);
+    let respuesta2 = await respuesta1.json();
+    return respuesta2;
+    
 }

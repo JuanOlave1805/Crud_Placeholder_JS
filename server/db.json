@@ -7,6 +7,10 @@
     {
       "id": "2",
       "name": "C.C"
+    },
+    {
+      "id": "517d",
+      "name": "Tarjeta de credito"
     }
   ],
   "usuario": [
@@ -20,22 +24,22 @@
       "email": "teste@exemplo.us"
     },
     {
-      "id": "5151221333",
-      "nombre": "Jon",
-      "apellido": "Doe",
-      "telefono": "6019521325",
-      "direccion": "1600 Amphitheatre Parkway",
-      "tipo": "2",
-      "email": "test@example.us"
+      "id": "8465465465",
+      "nombre": "asd",
+      "apellido": "asd",
+      "telefono": "8465464455",
+      "direccion": "asd",
+      "tipo": "1",
+      "email": "correo@correo.com"
     },
     {
-      "id": "2113213132",
-      "nombre": "Jon",
-      "apellido": "Doe",
+      "id": "5151221333",
+      "nombre": "asdq",
+      "apellido": "asfd",
       "telefono": "6019521325",
-      "direccion": "1600 Amphitheatre Parkway",
+      "direccion": "sad",
       "tipo": "2",
-      "email": "test@example.us"
+      "email": "correo@correo.com"
     }
   ]
 }

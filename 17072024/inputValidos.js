@@ -4,6 +4,7 @@ const inputValidos = (event, form) => {
     event.preventDefault();
     const elemento = dom.querySelectorAll(form);
     
+    
     let bandera = true;
     elemento.forEach(elemento => {
         if (elemento.value === "") {

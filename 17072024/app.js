@@ -1,8 +1,10 @@
 import {default as inputValidos} from "./inputValidos.js";
 import {default as letras} from "./modulo.js";
 import {default as numeros} from "./validacionNumeros.js";
-import {check, send, opcionesSelect, mostrar} from "./modulo.js";
-opcionesSelect();
+import {check, send, opcionesSelect, mostrar, opcionesSelector, filtrar} from "./modulo.js";
+
+// Seleccionar el elemento del DOM
+const $select = document.querySelector("#tipoDocumento");
 
 const $inputNombre = document.querySelector("#inputNombre");
 const $inputApellido = document.querySelector("#inputApellido");
@@ -131,7 +133,8 @@ $inputEmail.addEventListener("blur", (event) =>{
 
 $form.addEventListener("submit", (event) =>{
 
-    let reponse = inputValidos(event, "form [required]")
+    const hola = "form [required]";
+    let reponse = inputValidos(event, hola)
 
     const objeto = {
         nombre: $inputNombre.value,
@@ -149,55 +152,154 @@ $form.addEventListener("submit", (event) =>{
     }
 })
 
+// const listar = async () => {
+//     const $framento = document.createDocumentFragment();
+//     const $tabla = document.getElementById('tabla'); // Asegúrate de que este sea el ID correcto de la tabla en tu HTML
+    
+//     // Obtenemos los datos
+//     const datos = await mostrar();
+
+    
+//     datos.forEach(element => {
+//         let idElement = element.tipo;
+//         const filtro = filtrar().then(
+//             data => {
+//                 // console.log($framento)
+//                 data.forEach(element2 => {
+                    
+//                     if (element2.id === idElement){
+//                         // console.log(element2.id)
+                        
+//                         let nombre  = element2.name
+//                         const $tr = document.createElement('tr');
+//                         const $td1 = document.createElement('td');
+//                         const $td2 = document.createElement('td');
+//                         const $td3 = document.createElement('td');
+//                         const $td4 = document.createElement('td');
+//                         const $td5 = document.createElement('td');
+//                         const $td6 = document.createElement('td');
+//                         const $td7 = document.createElement('td');
+
+
+//                         $td1.textContent = element.id;
+//                         $td2.textContent = element.nombre; 
+//                         $td3.textContent = element.apellido;
+//                         $td4.textContent = element.telefono;
+//                         $td5.textContent = element.direccion; 
+//                         $td6.textContent = nombre; 
+//                         $td7.textContent = element.email;   
+
+
+//                         $tr.classList.add("casilla");
+//                         $tr.appendChild($td1);
+//                         $tr.appendChild($td2);
+//                         $tr.appendChild($td3);
+//                         $tr.appendChild($td4);
+//                         $tr.appendChild($td5);
+//                         $tr.appendChild($td6);
+//                         $tr.appendChild($td7);
+
+
+//                         $framento.appendChild($tr);
+//                         // console.log($framento)
+//                         return $framento;
+//                     }
+//                 })
+//             });
+
+//             // console.log($framento)
+//         // return $framento;    
+//     });
+//     console.log($framento);
+//     // console.log($tabla);
+//     $tabla.appendChild($framento);
+// }
+
 const listar = async () => {
     const $framento = document.createDocumentFragment();
     const $tabla = document.getElementById('tabla'); // Asegúrate de que este sea el ID correcto de la tabla en tu HTML
-    
+   
     // Obtenemos los datos
     const datos = await mostrar();
 
-    datos.forEach(element => {
-        const $tr = document.createElement('tr');
-        const $td1 = document.createElement('td');
-        const $td2 = document.createElement('td');
-        const $td3 = document.createElement('td');
-        const $td4 = document.createElement('td');
-        const $td5 = document.createElement('td');
-        const $td6 = document.createElement('td');
-        const $td7 = document.createElement('td');
+    const promesas = datos.map(async element => {
+        let idElement = element.tipo;
+        const data = await filtrar("documento");
 
+        data.forEach(element2 => {
+            if (element2.id === idElement) {
 
-        $td1.textContent = element.id;
-        $td2.textContent = element.nombre; 
-        $td3.textContent = element.apellido;
-        $td4.textContent = element.telefono;
-        $td5.textContent = element.direccion; 
-        $td6.textContent = element.tipo;   
-        $td7.textContent = element.email;   
+                let nombre  = element2.name;
+                const $tr = document.createElement('tr');
+                const $td1 = document.createElement('td');
+                const $td2 = document.createElement('td');
+                const $td3 = document.createElement('td');
+                const $td4 = document.createElement('td');
+                const $td5 = document.createElement('td');
+                const $td6 = document.createElement('td');
+                const $td7 = document.createElement('td');
+                $td1.textContent = element.id;
+                $td2.textContent = element.nombre;
+                $td3.textContent = element.apellido;
+                $td4.textContent = element.telefono;
+                $td5.textContent = element.direccion;
+                $td6.textContent = nombre;
+                $td7.textContent = element.email;   
+                $tr.classList.add("casilla");
+                $tr.appendChild($td1);
+                $tr.appendChild($td2);
+                $tr.appendChild($td3);
+                $tr.appendChild($td4);
+                $tr.appendChild($td5);
+                $tr.appendChild($td6);
+                $tr.appendChild($td7);
 
-
-        $tr.classList.add("casilla");
-        $tr.appendChild($td1);
-        $tr.appendChild($td2);
-        $tr.appendChild($td3);
-        $tr.appendChild($td4);
-        $tr.appendChild($td5);
-        $tr.appendChild($td6);
-        $tr.appendChild($td7);
-
-
-        $framento.appendChild($tr);    
+                $framento.appendChild($tr);
+            }
+        });
     });
 
+    // Espera a que todas las promesas se resuelvan
+    await Promise.all(promesas);
+
+    // Agrega el fragmento a la tabla
     $tabla.appendChild($framento);
 }
-listar();
 
+// Crear las opciones del select
+// datos.forEach(element => {
+//     const $opcion = document.createElement("option");
+//     $opcion.innerText = element.name; // O element.nombre dependiendo de la estructura de tu JSON
+//     $opcion.setAttribute('value', `${element.id}`);
+//     $select.appendChild($opcion);
+// });
 
 addEventListener("DOMContentLoaded", (event) => {
+    let respuesta = opcionesSelector("documento").then
+    (data => {
+        console.log(data.length);
+        const $fragmento = document.createDocumentFragment();
+        const $opcion = document.createElement("option");
+        $opcion.innerText = "Seleccionar"; 
+        $opcion.setAttribute('value', "");
+        $fragmento.appendChild($opcion);
+
+        // Crear las opciones del select
+        data.forEach(element => {
+            console.log(element.name)
+            const $opcion = document.createElement("option");
+            $opcion.innerText = element.name; 
+            $opcion.setAttribute('value', element.id);
+            $fragmento.appendChild($opcion);
+        });
+        $select.appendChild($fragmento);
+    })
+    
+
     if(!$checkbox.checked){
         $btnEnviar.setAttribute("disabled", "");
     }
+    listar();
 })
 $checkbox.addEventListener("change", function (e) {
     if(e.target.checked){
